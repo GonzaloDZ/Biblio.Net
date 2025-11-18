@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block titulo %}Material{% endblock %}
+
+{% block contenido %}
+
+  <h2>Nuevo Material</h2>
+  <form method="POST">
+      {{ form.hidden_tag() }}
+      {{ form.nombre.label }}<br>
+      {{ form.nombre }}<br><br>
+      {{ form.submit(class_="button is-success") }}
+</form>
+{% endblock %}

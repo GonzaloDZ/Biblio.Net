@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block titulo %}Nuevo Libro{% endblock %}
+
+{% block contenido %}
+
+<h2>Nuevo Libro</h2>
+<form method="POST">
+    {{ form.hidden_tag() }}
+    {{ form.titulo.label }}<br>
+    {{ form.titulo }}<br><br>
+    <input type="submit" value="Crear" class="button is-success">
+</form>
+{% endblock %}

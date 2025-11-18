@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block titulo %}Editar Usuario{% endblock %}
+
+{% block contenido %}
+<h2>Editar Usuario</h2>
+<form method="POST">
+    {{ form.nombre.label }}<br>
+    {{ form.nombre(size=32) }}<br><br>
+
+    {{ form.email.label }}<br>
+    {{ form.email(size=32) }}<br><br>
+
+    <input type="submit" value="Actualizar">
+</form>
+{% endblock %}

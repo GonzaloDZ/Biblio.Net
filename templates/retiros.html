@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block titulo %} Libros {% endblock %}
+
+{% block contenido %}
+
+<h3>Registros de Retiros</h3>
+<br>
+Agregar: 
+<a href="{{ url_for('users.users_create') }}">Usuario</a> | 
+<a href="{{ url_for('books.create_book') }}">Libro</a> | 
+<a href="{{ url_for('materials.create_material') }}">Material</a> | 
+<a href="{{ url_for('courses.create_course') }}">Curso</a> |
+<a href="{{ url_for('preceptors.create_preceptor') }}">Preceptor</a> |
+<a href="{{ url_for('shifts.create_shift') }}">Turno</a> 
+<br>
+<br>
+<br>
+
+<table class="table">
+    <tr>
+        <th>Usuario</th>
+        <th>Libro</th>
+        <th>Materiales</th>
+        <th>Curso</th>      
+        <th>Preceptor</th>      
+        <th>Turnos</th>      
+        <th>Fecha de Retiro</th>
+        <th>Fecha de Devolución</th>    
+        <th>Acciones</th>
+    </tr>
+    {% for r in retiros %}
+    <tr>
+        <td>{{ r.users.nombre }} {{ r.users.apellido }}</td>
+        <td>{{ r.books.titulo }}</td>
+        <td>{{ r.material.nombre }}</td>
+        <td>{{ r.course.curso }}</td>
+        <td>{{ r.preceptor.nombre }}</td>
+        <td>{{ r.shift.turno }}</td>
+        <td>{{ r.created_at.strftime('%Y-%m-%d') if r.created_at else 'N/A' }}</td>
+        <td>{{ r.fecha_devolucion.strftime('%Y-%m-%d') if r.fecha_devolucion else 'N/A' }}</td>
+        <td>        <form action="{{ url_for('main.devolver', retiro_id=r.id) }}" method="POST" style="display:inline;">
+            <button type=M"submit" class="button is-danger is-small">Devolver</button>
+        </form>
+        </td>
+    </tr>
+    {% else %}
+    <tr>
+        <td colspan="5">No hay registros de retiros.</td>
+    </tr>
+    {% endfor %}
+</table>
+
+    {% if query %}
+    <p>Resultados para: <strong>{{ query }}</strong></p>
+    {% endif %} 
+
+{% endblock %}

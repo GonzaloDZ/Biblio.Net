@@ -1,0 +1,11 @@
+<!doctype html>
+<html>
+<body>
+  {% if user %}
+    <h3>Usuario encontrado:</h3>
+    <p>{{ user.username }}: {{ user.nombre }} {{ user.apellido }} – {{ user.email }} – {{ user.libro }}</p>
+  {% else %}
+    <h3>No se encontró el usuario</h3>
+  {% endif %}
+</body>
+</html>

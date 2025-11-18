@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block titulo %}Agregar cursos{% endblock %}
+
+{% block contenido %}
+    <form method="POST">
+        {{ form.hidden_tag() }}
+        {{ form.course.label }}<br>{{ form.course}}<br><br>
+        {{ form.submit }}
+    </form>
+    <tr>
+        <td><a href="/Courses/{{ u.id }}">{{ u.cursos }}</a> value = curso </td>
+    </tr>
+{% endblock %}

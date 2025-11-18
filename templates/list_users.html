@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block titulo %}Lista de Usuarios{% endblock %}
+
+{% block contenido %}
+
+<ul>
+    {% for usuario in usuarios %}
+        <li>
+            {{ usuario.nombre }} - {{ usuario.email }}
+            <a href="{{ url_for('users.get_user', user_id=usuario.id) }}">Editar</a>
+            <form action="{{ url_for('users.delete_user', user_id=usuario.id) }}" method="POST" style="display:inline;">
+                <button type="submit">Eliminar</button>
+            </form>
+        </li>
+    {% else %}
+        <li>No hay usuarios registrados.</li>
+    {% endfor %}
+</ul>
+
+<!-- Formulario de creación de usuario -->
+<h2 id="form-nuevo-usuario">Crear Nuevo Usuario</h2>
+<form method="POST">
+    {{ form.hidden_tag() }}
+    {{ form.username.label }}<br>
+    {{ form.username }}<br>
+    {{ form.nombre.label }} {{ form.nombre }}
+    {{ form.apellido.label }} {{ form.apellido }}<br><br>
+    {{ form.email.label }}<br>
+    {{ form.email }}<br><br>
+    {{ form.password.label }}<br>
+    {{ form.password }}<br>
+    {{ form.libro.label }}<br>
+    {{ form.libro }}<br><br>
+    {{ form.material.label }}<br>
+    {{ form.material }}<br><br>
+    {{ form.course.label }}<br>
+    {{ form.course }}<br><br>
+    {{ form.preceptor.label }}<br>
+    {{ form.preceptor }}<br><br>
+    {{ form.shift.label }}<br>
+    {{ form.shift }}<br><br>
+    <input type="submit" value="Crear" class="button is-success">
+</form>
+
+{% endblock %}
+

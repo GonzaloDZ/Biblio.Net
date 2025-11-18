@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block titulo %}Lista de Materiales{% endblock %}
+
+{% block contenido %}
+<a href="{{ url_for('materials.create_material') }}">Agregar nuevo material</a>
+
+</table>
+
+<table class="table">
+    <tr>
+        <th>Material</th>
+        <th>Borrar</th>
+    </tr>
+{% for material in materiales %}
+    <tr>
+        <td>{{ material.nombre }}</td>
+        <td>
+        <form action="{{ url_for('materials.delete_material', material_id=material.id) }}" method="POST" style="display:inline;">
+            <button style="width:120px" type="submit">Eliminar</button>
+        </form>
+        </td>
+    </tr>
+{% endfor %}
+</table>
+{% endblock %}

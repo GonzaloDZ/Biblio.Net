@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block titulo %}Lista de Preceptores{% endblock %}
+
+{% block contenido %}
+<a href="{{ url_for('preceptors.create_preceptor') }}">Agregar nuevo preceptor</a>
+
+<table>
+
+<table class="table">
+    <tr>
+        <th>Preceptor</th>
+        <th>Borrar</th>
+    </tr>
+{% for preceptor in preceptores %}
+    <tr>
+        <td>{{ preceptor.nombre }}</td>
+        <td>
+        <form action="{{ url_for('preceptors.delete_preceptor', preceptor_id=preceptor.id) }}" method="POST" style="display:inline;">
+            <button style="width:120px" type="submit">Eliminar</button>
+        </form>
+        </td>
+    </tr>
+{% endfor %}
+</table>
+{% endblock %}

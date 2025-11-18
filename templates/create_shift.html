@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block titulo %}Agregar Turno{% endblock %}
+
+{% block contenido %}
+<h2>Nuevo Turno</h2>
+
+<form method="POST">
+    {{ form.hidden_tag() }}
+
+    {{ form.turno.label }}<br>
+    {{ form.turno }}<br><br>
+
+    {{ form.submit(class_="button is-success") }}
+</form>
+
+{% endblock %}

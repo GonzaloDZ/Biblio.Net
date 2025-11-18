@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block titulo %}Agregar Materiales{% endblock %}
+
+{% block contenido %}
+    <form method="POST">
+        {{ form.hidden_tag() }}
+        {{ form.elemento.label }}<br>{{ form.elemento }}<br><br>
+        {{ form.submit }}
+    </form>
+    <tr>
+        <td><a href="/Materials/{{ m.id }}">{{ m.elemento }}</a></td>
+    </tr>
+{% endblock %}

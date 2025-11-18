@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block titulo %}Agregar Libro{% endblock %}
+
+{% block contenido %}
+    <form method="POST">
+        {{ form.hidden_tag() }}
+        {{ form.titulo.label }}<br>{{ form.titulo }}<br><br>
+        {{ form.submit }}
+    </form>
+<tr>
+  <td><a href="{{ url_for('books.get_book', book_id=book.id) }}">{{ book.titulo }}</a></td>
+</tr>
+{% endblock %}

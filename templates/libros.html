@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block titulo %}Lista de Libros{% endblock %}
+
+{% block contenido %}
+<a href="{{ url_for('books.libros_agregar') }}">Agregar nuevo libro</a> 
+
+</table>
+    
+<table class="table">
+    <tr>
+        <th>Titulo</th>
+        <th>Borrar</th>
+    </tr>
+{% for libro in libros %}
+    <tr>
+        <td>{{ libro.titulo }}</td>
+        <td>
+        <form action="{{ url_for('books.delete_book', book_id=libro.id) }}" method="POST" style="display:inline;">
+            <button style="width:120px" type="submit">Eliminar</button>
+        </form>
+        </td>
+    </tr>
+{% endfor %}
+</table>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block titulo %}Lista de Cursos{% endblock %}
+
+{% block contenido %}
+<a href="{{ url_for('courses.create_course') }}">Agregar nuevo curso</a>
+
+<table>
+
+<table class="table">
+    <tr>
+        <th>Curso</th>
+        <th>Borrar</th>
+    </tr>
+{% for curso in cursos %}
+    <tr>
+        <td>{{ curso.curso }}</td>
+        <td>
+        <form action="{{ url_for('courses.delete_course', course_id=curso.id) }}" method="POST" style="display:inline;">
+            <button style="width:120px" type="submit">Eliminar</button>
+        </form>
+        </td>
+    </tr>
+{% endfor %}
+</table>
+{% endblock %}
