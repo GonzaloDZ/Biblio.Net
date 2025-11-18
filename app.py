@@ -1,5 +1,6 @@
 from flask import Flask
 from models import db
+import os
 
 # Importar Blueprints
 from routes.main_routes import main_bp
@@ -12,7 +13,7 @@ from routes.preceptors import preceptors_bp
 from routes.shifts import shifts_bp
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = 'your-secret-key'
+app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'FALLBACK_CLAVE_DEV')
 
 # Registrar Blueprints
 app.register_blueprint(main_bp)
